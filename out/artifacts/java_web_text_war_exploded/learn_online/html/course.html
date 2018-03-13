@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>course_view</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../scss/common/common.css"/>
+    <link rel="stylesheet" href="../scss/course_view/course_view.css"/>
+    <link rel="stylesheet" href="../scss/unit/swiper-3.4.2.min.css"/>
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+    <script src="../js/prefixfree/prefixfree.min.js"></script>
+    <script src="../js/unit/swiper-3.4.2.jquery.min.js"></script>
+    <script src="../js/course_view/course_view.js"></script>
+</head>
+<body>
+<div id="div_main">
+    <div id="div_nav">
+        <div id="div_back"></div>
+        <div id="div_course_name"></div>
+    </div>
+    <div id="div_video">
+        <!--<div id="video_content">-->
+            <video id="video" controls>
+                <source type="video/mp4"/>
+                当前浏览器不支持 video直接播放，点击这里下载视频： <a href="/">下载视频</a>
+            </video>
+    </div>
+    <div id="div_choose">
+        <div id="div_introduction" class="div_choose_item">
+            简介
+        </div>
+        <div id="div_catalog" class="div_choose_item">
+            目录
+        </div>
+        <div id="div_discuss" class="div_choose_item">
+            讨论
+        </div>
+    </div>
+
+    <!--内容区-->
+    <div id="div_content" class="swiper-container">
+        <div id="content_item" class="swiper-wrapper">
+            <div id="content_introduction" class="swiper-slide content_item">
+                <div id="bref_instruction_item" class="div_content_item">
+                    <div id="bref_instruction_item_line1">
+                        <div id="div_item_name">
+                            简介
+                        </div>
+                        <div id="div_item_time">
+                            2015年7月11日建
+                        </div>
+                        <div id="div_item_person">
+                            孤独的小猫
+                        </div>
+                    </div>
+                    <div id="bref_instruction_item_line2">
+                        <div id="div_item_score" class="div_line2">
+                            <div id="score_name" class="score">评分</div>
+                            <div id="score_stars" class="score">
+                                <img  class="score_stars " src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                            </div>
+                            <div id="score_text" class="score">0</div>
+                        </div>
+                        <div id="div_item_watch_times" class="div_line2">
+                            <img src="../image/course/play.svg"/>
+                            <div id="watch_times">1500播放</div>
+                        </div>
+                        <div id="div_item_download_times" class="div_line2">
+                            <img src="../image/course/download.svg"/>
+                            <div id="download_times">1500下载</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="resouces_item" class="div_content_item">
+                    <div id="resouces_line_1">
+                        <div class="div_item_name" id="resources_name">
+                            相关资源
+                        </div>
+                    </div>
+                    <div id="resouces_line_2">
+                        <div class="resouces_download"><a id="video_link" href="" download>视频(下载)</a></div>
+                        <div class="resouces_download"><a id="ppt_link" href="">ppt</a></div>
+                        <div class="resouces_download"><a id="code_link" href="" download>源码(下载)</a></div>
+                    </div>
+                </div>
+                <div id="introduce_item" class="div_content_item">
+                <div id="introduce_line_1">
+                    <div class="div_item_name" id="introduce_name">
+                        课程介绍
+                    </div>
+                </div>
+                <div id="introduce_line_2"></div>
+            </div>
+            </div>
+            <div id="content_catalog" class="swiper-slide">
+                <div id="catalog_name">
+                    HPH
+                </div>
+                <div id="catalog_item">
+                </div>
+            </div>
+
+            <div id="content_discuss" class="swiper-slide">
+            </div>
+        </div>
+
+        <div class="swiper-pagination">
+        </div>
+    </div>
+    <!--发表评论的加号-->
+    <div id="add_discuss">
+        <img  src="../image/course/Add_icon.png"/>
+    </div>
+    <div id="add_discuss_back" class="grep_back">
+        <div id="add_main" class="back_main">
+            <div id="add_name" class="back_name">
+                请输入你的评论:
+            </div>
+            <textarea id="discuss_publish"></textarea>
+            <div id="add_sure" class="back_sure">
+                发布
+            </div>
+        </div>
+    </div>
+    <!--我的评分星星-->
+    <div id="star_back" class="grep_back">
+        <div id="star_main">
+            <div id="star_name">
+                我的评分:
+            </div>
+                <div id="star_score">
+                    <div id="star_score_stars">
+                        <img id="score_stars_1" class="score_stars " src="../image/course/stars_gray.svg"/>
+                        <img id="score_stars_2" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                        <img id="score_stars_3" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                        <img id="score_stars_4" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                        <img id="score_stars_5" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                    </div>
+                    <div id="star_score_score">
+                        4
+                    </div>
+                </div>
+            <div id="star_sure">
+                确定
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

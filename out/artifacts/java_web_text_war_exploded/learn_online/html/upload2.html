@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../scss/manage/upload.css"/>
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<style rel="stylesheet">
+    .file{position:relative;display:inline-block;background:#D0EEFF;border:1px solid #99D3F5;border-radius:4px;padding:4px 12px;overflow:hidden;color:#1E88C7;text-decoration:none;text-indent:0;line-height:20px}.file .back{position:absolute;width:100%;height:100%;top:0;left:0;background-color:#aeaeb0;font-size:0.8rem;display:flex;justify-content:center;align-items:center}.file input{position:absolute;font-size:100px;right:0;top:0;opacity:0}.file:hover{background:#AADFFD;border-color:#78C3F3;color:#004974;text-decoration:none}.file:active{background:#AADFFD;border-color:#78C3F3;color:#004974;text-decoration:none}.line2{width:100%;display:flex;justify-content:space-around;align-items:center}.line2 .progress_back{width:60%;height:20px;background-color:#f8f8f8;border-radius:10px;border:1px solid #4B4B4B}.line2 .progress_back .progress{background-color:#90ed7d;height:100%;width:0;border-radius:10px}.line2 .percent{font-size:0.8rem}.file_info{display:flex;flex-direction:column;align-items:center;margin:10px 15px;padding:10px;border-bottom:1px solid #4B4B4B}.file_info .line1{display:flex;justify-content:space-around;align-items:center;height:50px;width:100%;margin-bottom:10px}.file_info .line1 .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px;font-size:0.8rem}.file_info .line1 .name:active{font-size:0.5rem}.file_info .line1 .size{font-size:0.5rem}.file_info .line1 .time{font-size:0.5rem}.file_info .line1 .cancel{display:flex;justify-content:center;align-items:center;height:40px;border:1px solid #e4d354;border-radius:6px;width:60px;background-color:#feff6d}
+    /*# sourceMappingURL=upload.css.map */
+
+</style>
+<div class="file"><input type="file" id="files" name="files[]" multiple />
+    选择文件
+</div>
+<div id="upload" class="file">
+    上传
+</div>
+
+<script type="text/javascript">
+    var files=null;
+    var arr=[];
+    var filenames=0;
+    function handleFileSelect(evt) {
+        files = evt.target.files;
+        var div_info=$("body");
+        for (var i = 0, f; f = files[i]; i++) {
+            div_info.append(
+                    "<div class='file_info' id='info"+i+"'>" +
+                    "<div class='line1'>" +
+                    "<div class='name' title='厚度清楚能读取'>" +
+                    f.name +
+                    "</div>" +
+                    "<div class='size'>" +
+                    round2((f.size/1024),2)+"M"+
+                    "</div>" +
+                    "<div class='cancel' id='cancel"+i+"' data-id='"+i+"'>" +
+                    "cancel " +
+                    "</div>"+
+                    "</div>" +
+                    "</div>"
+            );
+            $("#cancel"+i).on("click",function () {
+                var num=$(this).data("id");
+                $("#info"+num).remove();
+                arr.push(num);
+            });
+        }
+    }
+    function round2(number,fractionDigits){
+        with(Math){
+            return round(number*pow(10,fractionDigits))/pow(10,fractionDigits);
+        }
+    }
+
+    function ajax_upload() {
+        $("body").append(
+                "<div class='line2'>" +
+                "<div class='progress_back'>" +
+                "<div class='progress'></div>" +
+                "</div>" +
+                "<div class='percent'>" +
+                "</div>" +
+                "</div>"
+        );
+        var formData = new FormData();
+        for(var i=0;i<files.length;i++){
+            var pf=true;
+            for(var x=0;x<arr.length;x++){
+                if(arr[x]==i){
+                    pf=false;
+                }
+            }
+            if(!pf){
+                continue;
+            }
+            filenames++;
+            formData.append('file',files[i]);
+        }
+        $.ajax({
+            url: 'http://demoservice.ngrok.cc/file/upload',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function(res) {}).fail(function(res) {});
+        setInterval(ajax_progress,1000);
+    }
+
+    function ajax_progress() {
+        $.ajax({
+            type: 'post',
+            url: "http://demoservice.ngrok.cc/file/upfile/progress",
+            // data: JSON.stringify({content:"content"}),
+            data:filenames,
+            cache: false,
+            dataType:"json",
+            async:false,
+            success:function (data) {
+                var num=parseInt(data["pItems"]);
+                $(".progress").css({"width":parseInt(data["value"])+"%"});
+                $(".percent").text("已有"+num+"文件上传完成");
+                if($("#info"+(num-1)).length!=0){
+                    $("#info"+(num-1)).remove();
+                }
+                if(filenames<=num){
+                    $(".file").remove(".back");
+                    $(".line2").remove();
+                }
+            }
+        });
+    }
+
+    var div_upload=$("#upload");
+    div_upload.on("click",function () {
+        ajax_upload();
+        $(".file").append(
+                "<div class='back'>" +
+                "上传中"+
+                "</div>"
+        );
+        $(".back").on("click",function (event) {
+            event.stopPropagation();
+        });
+    });
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+</body>
+</html>

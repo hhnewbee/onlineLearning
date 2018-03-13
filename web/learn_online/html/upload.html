@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../scss/manage/upload.css"/>
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<style rel="stylesheet">
+
+</style>
+<div class="file"><input type="file" id="files" name="files[]" multiple />
+    选择文件
+</div>
+<div id="upload" class="file">
+    上传
+</div>
+<!--<div class="file_info">-->
+    <!--<div class="line1">-->
+        <!--<div class="name" title="厚度清楚能读取">-->
+            <!--厚度清楚能读取-->
+        <!--</div>-->
+        <!--<div class="size">-->
+            <!--50kb-->
+        <!--</div>-->
+        <!--<div class="cancel">-->
+            <!--cancel-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="line2">-->
+        <!--<div class="progress_back">-->
+            <!--<div class="progress"></div>-->
+        <!--</div>-->
+        <!--<div class="percent">-->
+            <!--50%-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<script type="text/javascript">
+    var files=null;
+    var arr=[];
+    var filenames=0;
+    function handleFileSelect(evt) {
+        files = evt.target.files;
+        var div_info=$("body");
+        var div_upload=$("#upload");
+        for (var i = 0, f; f = files[i]; i++) {
+            div_info.append(
+                    "<div class='file_info' id='info"+i+"'>" +
+                    "<div class='line1'>" +
+                    "<div class='name' title='厚度清楚能读取'>" +
+                    f.name +
+                    "</div>" +
+                    "<div class='size'>" +
+                    round2((f.size/1024),2)+"M"+
+                    "</div>" +
+                    "<div class='cancel' id='cancel"+i+"' data-id='"+i+"'>" +
+                    "cancel " +
+                    "</div>"+
+                    "</div>" +
+                    "</div>"
+                );
+            $("#cancel"+i).on("click",function () {
+                var num=$(this).data("id");
+                $("#info"+num).remove();
+                arr.push(num);
+            });
+        }
+        div_upload.on("click",function () {
+                ajax_upload();
+            });
+        }
+    function round2(number,fractionDigits){
+        with(Math){
+            return round(number*pow(10,fractionDigits))/pow(10,fractionDigits);
+        }
+    }
+
+    function ajax_upload() {
+        $("body").append(
+            "<div class='line2'>" +
+            "<div class='progress_back'>" +
+            "<div class='progress'></div>" +
+            "</div>" +
+            "<div class='percent'>" +
+            "已有3个文件上传完成"+
+            "</div>" +
+            "</div>"
+        );
+        var formData = new FormData();
+        for(var i=0;i<files.length;i++){
+            var pf=true;
+            for(var x=0;x<arr.length;x++){
+                if(arr[x]==i){
+                    pf=false;
+                }
+            }
+            if(!pf){
+                continue;
+            }
+            filenames++;
+            formData.append('file',files[i]);
+        }
+        $.ajax({
+            url: '192',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function(res) {}).fail(function(res) {});
+        setInterval(ajax_progress(),1000);
+    }
+
+    function ajax_progress() {
+        $(".file").append(
+           "<div class='back'>" +
+           "上传中"+
+           "</div>"
+        );
+        $(".back").on("click",function (event) {
+            event.stopPropagation();
+        });
+        $.ajax({
+            type: 'post',
+            url: "",
+            // data: JSON.stringify({content:"content"}),
+            data:filenames,
+            cache: false,
+            dataType:"json",
+            async:false,
+            success:function (data) {
+                var num=data["pItems"];
+                $(".progress").css({width:data["value"]+"%"});
+                $(".percent").text("已有"+num+"文件上传完成");
+                if($("#info"+(num-1)).length!=0){
+                    $("#info"+(num-1)).remove();
+                }
+                if(filenames<=num){
+                    $(".file").remove(".back");
+                    $(".line2").remove();
+                }
+            }
+        });
+    }
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+</body>
+</html>

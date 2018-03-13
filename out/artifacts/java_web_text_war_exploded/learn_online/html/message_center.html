@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../scss/common/common.css"/>
+    <link rel="stylesheet" href="../scss/unit/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="../scss/discuss/message_center.css">
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+    <script src="../js/unit/swiper-3.4.2.jquery.min.js"></script>
+    <script src="../js/discuss/message_center.js"></script>
+</head>
+<body>
+<div id="nav">
+    <img src="../image/common/返回.png">
+    <div>消息中心</div>
+</div>
+<label id="search_item">
+    <input id="search" type="text"/>
+    <div id="img_search">
+        <img src="../image/common/搜索.png">
+    </div>
+</label>
+<div id="choose">
+    <div class="choose_item" id="comment">评论</div>
+    <div class="choose_item" id="notice">通知</div>
+</div>
+<div class="swiper-container" >
+    <div class="swiper-wrapper">
+        <div id="comment_contain" class="swiper-slide" >
+        </div>
+        <div id="notic_contain" class="swiper-slide">
+        </div>
+    </div>
+
+    <div class="swiper-pagination">
+    </div>
+</div>
+</body>
+</html>

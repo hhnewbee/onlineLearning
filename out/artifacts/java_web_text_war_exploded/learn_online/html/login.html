@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="../scss/common/common.css"/>
+    <link rel="stylesheet" href="../scss/login/login_view.css"/>
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+    <script src="../js/prefixfree/prefixfree.min.js"></script>
+    <script src="../js/unit/layer-v3.0.3/layer/layer.js"></script>
+    <script src="../js/common/ajax.js"></script>
+    <script src="../js/login/login_view.js"></script>
+</head>
+<body>
+<div id="div_main">
+    <label class="label_login" id="label_login_number">
+        <img class="img_login_log" id="img_user" src="../image/login/user_icon_black.png"/>
+        <input id="input_number" class="input_log" type="text" placeholder="员工号/昵称"/>
+    </label>
+    <label class="label_login" id="label_login_password">
+        <img class="img_login_log" id="img_password" src="../image/login/password_black.png" />
+        <input id="input_password" class="input_log" type="text" placeholder="请输入密码"/>
+    </label>
+    <div id="div_login_button">登录</div>
+    <div id="div_forget">
+        <span>
+            忘记密码？
+        </span>
+    </div>
+
+</div>
+<div id="div_popup_main">
+    <div id="div_popup">
+        <div id="span_popup"></div>
+        <div id="div_popup_button">
+            确定
+        </div>
+    </div>
+</div>
+</body>
+</html>

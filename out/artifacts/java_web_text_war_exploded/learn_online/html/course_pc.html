@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../scss/common/common.css">
+    <link rel="stylesheet" href="../scss/unit/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="../scss/course_view/course_pc.css">
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+    <script src="../js/unit/swiper-3.4.2.jquery.min.js"></script>
+    <script src="../js/prefixfree/prefixfree.min.js"></script>
+    <script src="../js/unit/layer-v3.0.3/layer/layer.js"></script>
+    <script src="../js/common/ajax.js"></script>
+    <script src="../js/course/course_pc.js"></script>
+</head>
+<body>
+<div id="course_nav">
+    <div id="course_">
+        <div id="course_name">
+            PHP扩展
+        </div>
+        <div id="course_chapter">
+            第1.1章PHP的扩展
+        </div>
+    </div>
+    <div id="user_">
+        <div id="message" class="pm">
+            <div id="hasmessage">
+                12
+            </div>
+            <div  id="img_message">
+                <img src="../image/common/消息.png">
+            </div>
+        </div>
+        <div id="user" class="pm">
+            <img id="user_img" src="../image/common/logo.png">
+        </div>
+    </div>
+</div>
+<div id="course_video">
+    <video id="video" controls src="../image/1-7%20曲线阴影.mp4">
+        当前浏览器不支持在线播放，请前往下载区下载视频。
+    </video>
+</div>
+<div id="other">
+    <div id="other1">
+        <div id="info1">
+            <div id="brief" class="item">
+                简介
+            </div>
+            <div id="catalog" class="item">
+                目录
+            </div>
+            <div id="discuss" class="item">
+                讨论
+            </div>
+        </div>
+        <div class="swiper-container" >
+            <div class="swiper-wrapper" id="content1">
+                <div class="swiper-slide"  >
+                    <div id="content_brief" class="conten1_itme">
+                        <div id="b_item1">
+                            <div id="name">
+                            </div>
+                            <div id="usertime">
+                            </div>
+                        </div>
+                        <div id="b_item2">
+                            <div id="score_stars">
+                                <img  class="score_stars " src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                                <img  class="score_stars "  src="../image/course/stars_gray.svg"/>
+                            </div>
+                            <div id="uploader" class="b2">
+                            </div>
+                            <div class="b2">
+                                <img src="../image/course/play.svg">
+                                <div id="plays"></div>
+                            </div>
+                            <div  class="b2">
+                                <img src="../image/course/download.svg">
+                                <div id="downloads"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conten1_itme">
+                        <div class="conten1_itme_name">
+                            课程介绍
+                        </div>
+                        <div id="course_brief">
+                        </div>
+                    </div>
+                    <div class="conten1_itme">
+                        <div class="conten1_itme_name">
+                            相关资源下载
+                        </div>
+                        <div id="download_item">
+                        <!--<div class="down">-->
+                            <!--<img src="../image/course/课件下载.png">-->
+                            <!--<div>-->
+                                <!--PHP数据库开发-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" id="content_catalog">
+                    <div id="catalog_name">
+                    </div>
+                    <div id="catalog_item">
+                    </div>
+                </div>
+                <div id="content_discuss" class="swiper-slide">
+                    <!--发表评论-->
+                    <div id="add_discuss">
+                        添加评论
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination">
+            </div>
+        </div>
+
+    </div>
+    <div id="other2">
+        <div class="info2">
+            课程推荐
+        </div>
+        <div class="content2">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<!--我的评分星星-->
+<div id="star_back" class="grep_back">
+    <div id="star_main">
+        <div id="star_name">
+            我的评分:
+        </div>
+        <div id="star_score">
+            <div id="star_score_stars">
+                <img id="score_stars_1" class="score_stars " src="../image/course/stars_gray.svg"/>
+                <img id="score_stars_2" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                <img id="score_stars_3" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                <img id="score_stars_4" class="score_stars "  src="../image/course/stars_gray.svg"/>
+                <img id="score_stars_5" class="score_stars "  src="../image/course/stars_gray.svg"/>
+            </div>
+            <div id="star_score_score">
+                4
+            </div>
+        </div>
+        <div id="star_sure">
+            确定
+        </div>
+    </div>
+</div>
+</body>
+</html>

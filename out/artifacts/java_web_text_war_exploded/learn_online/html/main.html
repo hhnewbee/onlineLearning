@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <link rel="stylesheet" href="../scss/common/common.css"/>
+    <link rel="stylesheet" href="../scss/main/main.css"/>
+    <link rel="stylesheet" href="../scss/unit/swiper-3.4.2.min.css"/>
+    <script src="../js/jq/jquery-3.2.1.min.js"></script>
+    <script src="../js/prefixfree/prefixfree.min.js"></script>
+    <script src="../js/unit/swiper-3.4.2.jquery.min.js"></script>
+    <script src="../js/common/ajax.js"></script>
+    <script src="../js/main/main.js"></script>
+</head>
+<body>
+<div id="main" class="swiper-container">
+    <div class="swiper-wrapper">
+        <div id="homepage" class="swiper-slide">
+            <div class="home_nav">
+                <div class="left">
+                    <img src="../image/main/Search_icon.png">
+                </div>
+                <div class="right">
+                    <img src="../image/main/Bell_icon.png">
+                </div>
+            </div>
+            <div class="home_item">
+                <div>课程推荐</div>
+                <div id="change">换一批</div>
+            </div>
+            <div id="home_course_recommend">
+                <!--<div class="twocourse">-->
+                    <!--<div class="recommend_course">-->
+                        <!--<div class="course_name">-->
+                            <!--PHP好还是java好-->
+                        <!--</div>-->
+                        <!--<div class="course_content">-->
+                            <!--<div class="course_img"></div>-->
+                            <!--<div class="course_kind">-->
+                                <!--PHP类-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="course_info">-->
+                            <!--<div class="course_score">-->
+                                <!--<img class="score_stars" src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                            <!--</div>-->
+                            <!--<div class="course_num">-->
+                                <!--123人-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="recommend_course">-->
+                        <!--<div class="course_name">-->
+                            <!--PHP好还是java好-->
+                        <!--</div>-->
+                        <!--<div class="course_content">-->
+                            <!--<div class="course_img"></div>-->
+                            <!--<div class="course_kind">-->
+                                <!--PHP类-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="course_info">-->
+                            <!--<div class="course_score">-->
+                                <!--<img class="score_stars" src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                                <!--<img class="score_stars"  src="../image/course/stars_gray.svg"/>-->
+                            <!--</div>-->
+                            <!--<div class="course_num">-->
+                                <!--123人-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="home_item">
+                <div>我的课程</div>
+            </div>
+            <div id="home_course_my">
+                <div class="recommend_course">
+                    <div class="course_name">
+                        PHP好还是java好
+                    </div>
+                    <div class="course_content">
+                        <div class="course_img"></div>
+                        <div class="course_kind">
+                            PHP类
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home_item">
+                <div>新课上架</div>
+            </div>
+            <div id="home_course_new">
+                <div class="course_line1">
+                    <div class="course_line2">
+                        <div class="course_line3">
+                            <div class="course_kind">
+                                PHP
+                            </div>
+                            <div class="course_line4">
+                                <div class="course_name">
+                                    PHP数据库的运用
+                                </div>
+                                <div class="course_introduction">
+                                    讲了该如何使用数据库
+                                </div>
+                            </div>
+                            <div class="course_line5">
+                                <div class="course_star">
+                                    <img class="score_stars" src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                </div>
+                                <div class="course_number">
+                                    123
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course_line2">
+                        <div class="course_line3">
+                            <div class="course_kind">
+                                PHP
+                            </div>
+                            <div class="course_line4">
+                                <div class="course_name">
+                                    PHP数据库的运用
+                                </div>
+                                <div class="course_introduction">
+                                    讲了该如何使用数据库
+                                </div>
+                            </div>
+                            <div class="course_line5">
+                                <div class="course_star">
+                                    <img class="score_stars" src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                    <img class="score_stars"  src="../image/course/stars_gray.svg"/>
+                                </div>
+                                <div class="course_number">
+                                    123
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="course" class="swiper-slide">
+            <div class="home_nav">
+                <div class="left">
+                    <img src="../image/main/Search_icon.png">
+                </div>
+                <div class="right">
+                    <img src="../image/main/Bell_icon.png">
+                </div>
+            </div>
+            <div class="manage_item">
+                <div class="img_back">
+                    <img  src="../image/manage/我的上传.png">
+                </div>
+                <div class="manage_name">
+                    我的上传
+                </div>
+                <div id="myupload" class="go_back">
+                    <img src="../image/manage/前进(1).png">
+                </div>
+            </div>
+            <div class="manage_item">
+                <div class="img_back">
+                    <img src="../image/manage/我的评论.png">
+                </div>
+                <div class="manage_name">
+                    课程评论
+                </div>
+                <div class="go_back">
+                    <img src="../image/manage/前进(1).png">
+                </div>
+            </div>
+            <div class="manage_item">
+                <div class="img_back">
+                    <img src="../image/manage/活跃学员.png">
+                </div>
+                <div class="manage_name">
+                    我的学员
+                </div>
+                <div class="go_back">
+                    <img src="../image/manage/前进(1).png">
+                </div>
+            </div>
+        </div>
+        <div id="mine" class="swiper-slide">slider3</div>
+    </div>
+    <!--必须得有才能是用滑动触发-->
+    <div class="swiper-pagination">
+    </div>
+</div>
+<div id="tail">
+    <div id="homepage_turn" class="slide_iten">
+        <img class="slide_img" src="../image/learner/Wifi_icon.png">
+        <div class="slide_name">
+            主页
+        </div>
+    </div>
+    <div id="course_turn" class="slide_iten">
+        <img class="slide_img" src="../image/learner/Calendar_icon.png">
+        <div class="slide_name">
+            课程
+        </div>
+    </div>
+    <div id="mine_turn" class="slide_iten">
+        <img class="slide_img" src="../image/learner/User_icon.png">
+        <div class="slide_name">
+            我的
+        </div>
+    </div>
+</div>
+</body>
+</html>
